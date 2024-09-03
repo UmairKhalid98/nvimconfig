@@ -19,7 +19,7 @@ end
 
 -- here you can setup the language servers
  require("lazy").setup("main.plugins")
- require("main.core.cmpSetup")
+ -- require("main.core.cmpSetup")
  require("main.core.lspSetup")
  require("nvim-treesitter.configs").setup(
  require"main.core.plugins.treesitter" )

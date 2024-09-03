@@ -32,26 +32,7 @@ return {
         }
     },
     { 'williamboman/mason-lspconfig.nvim' },
-    { 'VonHeikemen/lsp-zero.nvim',        branch = 'v3.x' },
     { 'neovim/nvim-lspconfig' },
-    { "nvimtools/none-ls-extras.nvim" },
-    {
-        "nvimtools/none-ls.nvim",
-        config = function()
-            local null_ls = require("null-ls")
-
-            null_ls.setup({
-                sources = {
-                    -- null_ls.builtins.formatting.stylua,
-                    null_ls.builtins.formatting.prettier,
-
-                    require("none-ls.diagnostics.eslint_d")
-                    -- null_ls.builtins.completion.spell,
-                },
-            })
-            vim.keymap.set('v', '<leader>=', vim.lsp.buf.format, {})
-        end
-    },
     -- cmp stuff
     { 'hrsh7th/nvim-cmp' },
     { 'hrsh7th/cmp-path' },
@@ -75,7 +56,10 @@ return {
         -- use opts = {} for passing setup options
         -- this is equalent to setup({}) function
     },
-
+    {
+        'nvim-lualine/lualine.nvim',
+        dependencies = { 'nvim-tree/nvim-web-devicons' }
+    },
     {
         'nvim-telescope/telescope.nvim',
         tag = '0.1.5',
@@ -134,11 +118,11 @@ return {
         },
         config = function()
             require("nvim-tree").setup {
-                  actions = {
-    open_file = {
-      quit_on_open = true,
-    },
-  },
+                actions = {
+                    open_file = {
+                        quit_on_open = true,
+                    },
+                },
             }
         end,
     }
